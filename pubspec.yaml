@@ -3,7 +3,7 @@ description: >-
   This package allows you to check for connectivity to a URI
   and verify it's connectivity to that specific endpoint.
 
-version: 0.0.2
+version: 0.0.3
 homepage: https://abhiaggoel.dev/connection_checker
 repository: https://github.com/abhiaggoel/connection_checker
 issue_tracker: https://github.com/abhiaggoel/connection_checker/issues
