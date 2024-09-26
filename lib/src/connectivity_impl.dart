@@ -302,7 +302,10 @@ class ConnectionChecker {
   }
 
   /// A list of AddressConnectionResult with the Exception occured.
-  List<AddressConnectionResult>? failedRequests;
+  List<AddressConnectionResult>? get failedRequests{
+    return _failedRequests;
+  }
+  List<AddressConnectionResult>? _failedRequests;
 
   /// Initiates a request to each address in [addresses].
   /// If at least one of the addresses is reachable
@@ -319,10 +322,10 @@ class ConnectionChecker {
           if (!result.isCompleted) {
             if (request.isSuccess) {
               result.complete(true);
-              failedRequests = null;
+              _failedRequests = null;
             } else if (!request.isSuccess) {
-              failedRequests ??= [];
-              failedRequests!.add(request);
+              _failedRequests ??= [];
+              _failedRequests!.add(request);
             } else if (length == 0) {
               result.complete(false);
             }
