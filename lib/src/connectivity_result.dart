@@ -2,10 +2,11 @@ part of '../connection_checker.dart';
 
 /// Helper class that contains the address options and indicates whether
 /// opening a socket to it succeeded.
-class AdressConnectionResult {
-  /// [AdressConnectionResult] constructor
-  AdressConnectionResult(
+class AddressConnectionResult {
+  /// [AddressConnectionResult] constructor
+  AddressConnectionResult(
     this.option, {
+      this.exception,
     required this.isSuccess,
   });
 
@@ -15,9 +16,13 @@ class AdressConnectionResult {
   /// bool val to store result
   final bool isSuccess;
 
+  /// Gives the exception Result if successful connection
+  /// wasn't made.
+  final Exception? exception;
+
   @override
   String toString() {
-    return 'AdressConnectionResult(\n'
+    return 'AddressConnectionResult(\n'
         '   ${option.toString().replaceAll('\n', '\n  ')},\n'
         '  isSuccess: $isSuccess\n'
         ')';

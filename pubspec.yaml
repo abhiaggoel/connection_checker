@@ -1,12 +1,11 @@
 name: connection_checker
 description: >-
-  ConnectionChecker is a simple Flutter package that allows you
-  to check for internet connectivity or the connectivity status of
-  any URI provided. This package provides an easy way to verify if
-  a device is online or can access a specific endpoint, making it 
-  perfect for apps that need network status validation.
+  ConnectionChecker is a package that allows you
+  to check for connectivity to any URI provided. 
+  This package provides a to verify if a device is
+  online or can access a specific endpoint.
 
-version: 0.0.1
+version: 0.0.2
 homepage: https://abhiaggoel.dev/connection_checker
 repository: https://github.com/abhiaggoel/connection_checker
 issue_tracker: https://github.com/abhiaggoel/connection_checker/issues

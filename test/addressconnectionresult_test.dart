@@ -5,18 +5,18 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:connection_checker/connection_checker.dart';
 
 void main() {
-  group('AdressConnectionResult', () {
+  group('AddressConnectionResult', () {
     test('toString() returns correct string representation', () {
       HttpOption option = HttpOption(
         uri: Uri.parse('https://example.com'),
         timeout: const Duration(seconds: 3),
       );
-      AdressConnectionResult result = AdressConnectionResult(
+      AddressConnectionResult result = AddressConnectionResult(
         option,
         isSuccess: true,
       );
 
-      String expectedString = 'AdressConnectionResult(\n'
+      String expectedString = 'AddressConnectionResult(\n'
           '  option: HttpOption(\n'
           '    uri: https://example.com,\n'
           '    timeout: 0:00:03.000000,\n'
@@ -37,11 +37,11 @@ void main() {
         uri: Uri.parse('https://example.org'),
         timeout: const Duration(seconds: 5),
       );
-      AdressConnectionResult result1 = AdressConnectionResult(
+      AddressConnectionResult result1 = AddressConnectionResult(
          option1,
         isSuccess: true,
       );
-      AdressConnectionResult result2 = AdressConnectionResult(
+      AddressConnectionResult result2 = AddressConnectionResult(
         option2,
         isSuccess: true,
       );

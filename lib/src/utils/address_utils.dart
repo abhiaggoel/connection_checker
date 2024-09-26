@@ -8,8 +8,7 @@ class AddressUtils {
   /// may misfunction if user information is used
   ///
   static String trimPort(String input) {
-    Match? schemeMatch =
-        AddressRegexUtils.schemeRegex.firstMatch(input);
+    Match? schemeMatch = AddressRegexUtils.schemeRegex.firstMatch(input);
     String withoutScheme = trimScheme(input);
     String pathQueryFragment =
         withoutScheme.substring(trimAnyPathQueryFragment(withoutScheme).length);
@@ -36,10 +35,8 @@ class AddressUtils {
   /// Captures the String before the path or
   /// query or fragment
   static String trimAnyPathQueryFragment(String input) {
-    Match? schemeMatch =
-        AddressRegexUtils.schemeRegex.firstMatch(input);
-    String schemeHostPort = AddressRegexUtils
-        .removePathQueryFragmentRegex
+    Match? schemeMatch = AddressRegexUtils.schemeRegex.firstMatch(input);
+    String schemeHostPort = AddressRegexUtils.removePathQueryFragmentRegex
         .firstMatch(trimScheme(input))!
         .group(0)!;
     if (schemeMatch == null) {
@@ -64,9 +61,8 @@ class AddressUtils {
         //   return "false";
         // }
       } else {
-        Match? groupHostPortMatch = AddressRegexUtils
-            .removePathQueryFragmentRegex
-            .firstMatch(url);
+        Match? groupHostPortMatch =
+            AddressRegexUtils.removePathQueryFragmentRegex.firstMatch(url);
         if (groupHostPortMatch != null) {
           if (AddressRegexUtils.groupHostPortRegex
                   .firstMatch(groupHostPortMatch.group(0)!) ==
@@ -81,17 +77,15 @@ class AddressUtils {
       }
     } on FormatException catch (e) {
       if (e.message == "Scheme not starting with alphabetic character") {
-        Match? hostandportmatch = AddressRegexUtils
-            .removePathQueryFragmentRegex
-            .firstMatch(url);
+        Match? hostandportmatch =
+            AddressRegexUtils.removePathQueryFragmentRegex.firstMatch(url);
         String? ipv4withport = hostandportmatch?.group(0);
         if (ipv4withport != null) {
-          Match? hostmatch = AddressRegexUtils.groupHostPortRegex
-              .firstMatch(ipv4withport);
+          Match? hostmatch =
+              AddressRegexUtils.groupHostPortRegex.firstMatch(ipv4withport);
           if (hostmatch != null &&
               hostmatch.groupCount >= 2 &&
-              AddressRegexUtils.ipv4Regex
-                  .hasMatch(hostmatch.group(1)!) &&
+              AddressRegexUtils.ipv4Regex.hasMatch(hostmatch.group(1)!) &&
               AddressRegexUtils.containsNumbersOnlyRegex
                   .hasMatch(hostmatch.group(2)!) &&
               hostmatch.group(2)!.length <= 5) {
@@ -113,8 +107,7 @@ class AddressUtils {
   /// eg: input = "https://example.com/path?query#fragment;"
   /// returns "https"
   String? getScheme(String input) {
-    String? match =
-        AddressRegexUtils.schemeRegex.firstMatch(input)?.group(0);
+    String? match = AddressRegexUtils.schemeRegex.firstMatch(input)?.group(0);
     if (match != null) return RegExp(r'^[a-zA-Z]+').firstMatch(match)?.group(0);
     return null;
   }

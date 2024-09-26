@@ -240,7 +240,7 @@ class ConnectionChecker {
 
   /// Ping a single address. See [AddressOption] for
   /// info on the accepted argument.
-  Future<AdressConnectionResult> checkConnectivity(
+  Future<AddressConnectionResult> checkConnectivity(
     AddressOption options,
   ) async {
     if (options is SocketOption) {
@@ -261,15 +261,15 @@ class ConnectionChecker {
               // ;}, null, debugLabel: "ConnectionChecker.checkConnectivity")?
               ..destroy();
 
-        return AdressConnectionResult(
+        return AddressConnectionResult(
           options,
           isSuccess: true,
         );
       } on Exception catch (e) {
         sock?.destroy();
-        debugPrint("SocketOption: $e");
-        return AdressConnectionResult(
+        return AddressConnectionResult(
           options,
+          exception: e,
           isSuccess: false,
         );
       }
@@ -283,15 +283,14 @@ class ConnectionChecker {
                 .timeout(options.timeout);
         // }, null, debugLabel: "ConnectionChecker.checkConnectivity");
 
-        return AdressConnectionResult(
+        return AddressConnectionResult(
           options,
           isSuccess: options.responseStatusFn(response),
         );
       } on Exception catch (e) {
-        debugPrint("HttpOption: $e");
-
-        return AdressConnectionResult(
+        return AddressConnectionResult(
           options,
+          exception: e,
           isSuccess: false,
         );
       }
@@ -301,6 +300,9 @@ class ConnectionChecker {
       );
     }
   }
+
+  /// A list of AddressConnectionResult with the Exception occured.
+  List<AddressConnectionResult>? failedRequests;
 
   /// Initiates a request to each address in [addresses].
   /// If at least one of the addresses is reachable
@@ -312,16 +314,18 @@ class ConnectionChecker {
 
     for (final AddressOption addressOptions in _addresses) {
       unawaited(checkConnectivity(addressOptions).then(
-        (AdressConnectionResult request) {
+        (AddressConnectionResult request) {
           length -= 1;
           if (!result.isCompleted) {
             if (request.isSuccess) {
               result.complete(true);
+              failedRequests = null;
+            } else if (!request.isSuccess) {
+              failedRequests ??= [];
+              failedRequests!.add(request);
             } else if (length == 0) {
               result.complete(false);
             }
-          } else {
-            return;
           }
         },
       ));
