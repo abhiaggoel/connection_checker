@@ -1,16 +1,14 @@
 name: connection_checker
 description: >-
-  ConnectionChecker is a package that allows you
-  to check for connectivity to any URI provided. 
-  This package provides a to verify if a device is
-  online or can access a specific endpoint.
+  This package allows you to check for connectivity to a URI
+  and verify it's connectivity to that specific endpoint.
 
 version: 0.0.2
 homepage: https://abhiaggoel.dev/connection_checker
 repository: https://github.com/abhiaggoel/connection_checker
 issue_tracker: https://github.com/abhiaggoel/connection_checker/issues
 
-documentation: https://github.com/abhiaggoel/connection_checker/README.md
+documentation: https://github.com/abhiaggoel/connection_checker/blob/main/README.md
 
 
 environment:

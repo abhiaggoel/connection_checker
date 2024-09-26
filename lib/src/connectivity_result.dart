@@ -6,7 +6,7 @@ class AddressConnectionResult {
   /// [AddressConnectionResult] constructor
   AddressConnectionResult(
     this.option, {
-      this.exception,
+    this.exception,
     required this.isSuccess,
   });
 

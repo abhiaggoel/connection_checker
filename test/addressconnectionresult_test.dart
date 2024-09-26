@@ -38,7 +38,7 @@ void main() {
         timeout: const Duration(seconds: 5),
       );
       AddressConnectionResult result1 = AddressConnectionResult(
-         option1,
+        option1,
         isSuccess: true,
       );
       AddressConnectionResult result2 = AddressConnectionResult(
