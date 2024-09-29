@@ -21,13 +21,13 @@ Add the package to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  connectivity_checker: latest_version
+  connection_checker: ^0.0.3
 ```
 
 Then, run the following command to get the dependencies:
 
 ```bash
-flutter pub get connectivity_checker
+flutter pub get connection_checker
 ```
 
 ## Usage
@@ -64,7 +64,7 @@ macOS apps must allow network access in the relevant *.entitlements files.
 To check if the device is connected to the internet:
 
 ```dart
-import 'package:connectivity_checker/connectivity_checker.dart';
+import 'package:connection_checker/connection_checker.dart';
 
 void checkConnectivity() async {
   bool isConnected = await ConnectionChecker.hasConnection();
@@ -77,7 +77,7 @@ void checkConnectivity() async {
 To check if a specific URI is reachable:
 
 ```dart
-import 'package:connectivity_checker/connectivity_checker.dart';
+import 'package:connection_checker/connection_checker.dart';
 
 void checkConnectivity() async {
   String uri = 'https://example.com';
@@ -91,7 +91,7 @@ void checkConnectivity() async {
 You can also subscribe to changes in the device’s connectivity status (online/offline):
 
 ```dart
-import 'package:connectivity_checker/connectivity_checker.dart';
+import 'package:connection_checker/connection_checker.dart';
 
 void monitorConnectivityChanges() {
   ConnectionChecker.onConnectivityChanged.listen((status) {
@@ -130,7 +130,7 @@ Here’s a complete example of how to use **ConnectionChecker** in a Flutter app
 ```dart
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:connectivity_checker/connectivity_checker.dart';
+import 'package:connection_checker/connection_checker.dart';
 
 void main() {
   runApp(const MyApp());
@@ -191,7 +191,7 @@ class _MyAppState extends State<MyApp> {
 
 ## Contributing
 
-Contributions are welcome! Feel free to open a pull request or submit issues in the [GitHub repository](https://github.com/abhiaggoel/connectivity_checker).
+Contributions are welcome! Feel free to open a pull request or submit issues in the [GitHub repository](https://github.com/abhiaggoel/connection_checker).
 
 
 ## Current working
